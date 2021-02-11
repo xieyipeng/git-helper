@@ -1,0 +1,6 @@
+moc
+obj
+ui
+git-helper
+.qmake.stash
+git-helper.pro.user
