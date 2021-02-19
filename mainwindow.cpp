@@ -1,11 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
+                                          ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    git_config();
 }
 
 MainWindow::~MainWindow()
@@ -13,45 +13,49 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::git_config()
+{
+    MainWindow::git_repositories.append("/home/xieyipeng/code/git-helper");
+    MainWindow::git_repositories.append("/home/xieyipeng/code/Ng-DeepLearning");
+    MainWindow::git_repositories.append("/home/xieyipeng/code/Ng-MachineLearning");
+    ui->comboBox->addItems(MainWindow::git_repositories);
+}
+
 /**
  * @brief executeLinuxCmd
  * @param strCmd
  * @return
  */
-QString executeLinuxCmd(QString strCmd)
+QString MainWindow::executeLinuxCmd(QString strCmd)
 {
     QProcess p;
-    p.start("bash", QStringList() <<"-c" << strCmd);
+    p.start("bash", QStringList() << "-c" << strCmd);
     p.waitForFinished();
     QString strResult = p.readAllStandardOutput();
     return strResult;
 }
 
 /**
- * @brief MainWindow::on_choosePath_clicked
- */
-void MainWindow::on_choosePath_clicked()
-{
-    QString dirpath = QFileDialog::getExistingDirectory(this, "选择目录", "/home/", QFileDialog::ShowDirsOnly);
-    ui->pathShow->setText(dirpath);
-}
-
-/**
- * @brief isPath
+ * @brief isFloderExist
  * @param path
  * @return
  */
-bool isPath(QString path){
-    if(path.isEmpty()){
+bool MainWindow::isFloderExist(QString path)
+{
+    DIR *dp;
+    if ((dp = opendir(path.toStdString().data())) == NULL)
+    {
         return false;
     }
-    // 确定文件和文件夹是否存在和访问权限
-    // _AccessMode参数：  00表示只判断是否存在
-    //                   02表示文件是否可执行
-    //                   04表示文件是否可写
-    //                   06表示文件是否可读
-    // 有指定访问权限则返回0，否则函数返回-1
-    if(access(path.toStdString().data(),00)==-1){
+
+    closedir(dp);
+    return true;
+}
+
+bool MainWindow::isFileExist(std::string path)
+{
+    if (access(path.data(), F_OK) == -1)
+    {
         return false;
     }
     return true;
@@ -62,11 +66,12 @@ bool isPath(QString path){
  */
 void MainWindow::on_gitAdd_clicked()
 {
-    if(!isPath(ui->pathShow->text())){
+    if (!isFloderExist(ui->comboBox->currentText()))
+    {
         ui->statusMsg->setText("path error!");
         return;
     }
-    QString strResult = executeLinuxCmd("git -C " + ui->pathShow->text() + " add .");
+    QString strResult = executeLinuxCmd("git -C " + ui->comboBox->currentText() + " add .");
     ui->statusMsg->setText(strResult);
 }
 
@@ -75,11 +80,12 @@ void MainWindow::on_gitAdd_clicked()
  */
 void MainWindow::on_gitStatus_clicked()
 {
-    if(!isPath(ui->pathShow->text())){
+    if (!isFloderExist(ui->comboBox->currentText()))
+    {
         ui->statusMsg->setText("path error!");
         return;
     }
-    QString strResult = executeLinuxCmd("git status");
+    QString strResult = executeLinuxCmd("git -C " + ui->comboBox->currentText() + " status");
     ui->statusMsg->setText(strResult);
 }
 
@@ -89,11 +95,12 @@ void MainWindow::on_gitStatus_clicked()
 void MainWindow::on_gitCommit_clicked()
 {
     QString commit_msg = ui->commitMsg->text();
-    if(commit_msg.isEmpty()){
+    if (commit_msg.isEmpty())
+    {
         ui->statusMsg->setText("commit context is empty!");
         return;
     }
-    QString strResult = executeLinuxCmd("git -C " + ui->pathShow->text() + " commit -m \""+commit_msg+"\"");
+    QString strResult = executeLinuxCmd("git -C " + ui->comboBox->currentText() + " commit -m \"" + commit_msg + "\"");
     ui->statusMsg->setText(strResult);
 }
 
@@ -102,6 +109,7 @@ void MainWindow::on_gitCommit_clicked()
  */
 void MainWindow::on_gitPush_clicked()
 {
-    QString strResult = executeLinuxCmd("git -C " + ui->pathShow->text() + " push -u");
+    QString strResult = executeLinuxCmd("git -C " + ui->comboBox->currentText() + " push -u");
     ui->statusMsg->setText(strResult);
+    ui->commitMsg->clear();
 }

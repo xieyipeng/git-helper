@@ -27,29 +27,6 @@
      <string>git add .</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="pathShow">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>40</y>
-      <width>331</width>
-      <height>25</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="choosePath">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>40</y>
-      <width>89</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>choose path</string>
-    </property>
-   </widget>
    <widget class="QTextBrowser" name="statusMsg">
     <property name="geometry">
      <rect>
@@ -114,6 +91,16 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>git push</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>40</y>
+      <width>461</width>
+      <height>25</height>
+     </rect>
     </property>
    </widget>
   </widget>

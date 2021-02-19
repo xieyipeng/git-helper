@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=git-helper
+Comment=git-helper
+Exec=env /home/xieyipeng/code/git-helper/git-helper
+Icon=/home/xieyipeng/code/git-helper/git-helper.jpg
+Terminal=false
+Type=Application
+Categories=Application;Development;
+Name[zh_CN]=xieyipeng-git-helper

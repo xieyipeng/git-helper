@@ -6,6 +6,7 @@
 选择目录
 按钮执行：git -C <path> add .
 按钮执行：git status，并显示状态
-
-
+按钮执行：git commit，并显示状态
+按钮执行：git push，并显示状态
+基本可以运行
 
