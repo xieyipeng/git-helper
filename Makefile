@@ -213,7 +213,6 @@ DIST          = ../../anaconda3/mkspecs/features/spec_pre.prf \
 		../../anaconda3/mkspecs/features/qt_config.prf \
 		../../anaconda3/mkspecs/linux-g++/qmake.conf \
 		../../anaconda3/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		../../anaconda3/mkspecs/features/exclusive_builds.prf \
 		../../anaconda3/mkspecs/features/toolchain.prf \
 		../../anaconda3/mkspecs/features/default_pre.prf \
@@ -403,7 +402,6 @@ Makefile: git-helper.pro ../../anaconda3/mkspecs/linux-g++/qmake.conf ../../anac
 		../../anaconda3/mkspecs/features/qt_config.prf \
 		../../anaconda3/mkspecs/linux-g++/qmake.conf \
 		../../anaconda3/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		../../anaconda3/mkspecs/features/exclusive_builds.prf \
 		../../anaconda3/mkspecs/features/toolchain.prf \
 		../../anaconda3/mkspecs/features/default_pre.prf \
@@ -585,7 +583,6 @@ Makefile: git-helper.pro ../../anaconda3/mkspecs/linux-g++/qmake.conf ../../anac
 ../../anaconda3/mkspecs/features/qt_config.prf:
 ../../anaconda3/mkspecs/linux-g++/qmake.conf:
 ../../anaconda3/mkspecs/features/spec_post.prf:
-.qmake.stash:
 ../../anaconda3/mkspecs/features/exclusive_builds.prf:
 ../../anaconda3/mkspecs/features/toolchain.prf:
 ../../anaconda3/mkspecs/features/default_pre.prf:
@@ -777,7 +774,7 @@ moc/moc_mainwindow.cpp: ../../anaconda3/include/qt/QtWidgets/QMainWindow \
 		mainwindow.h \
 		moc/moc_predefs.h \
 		../../anaconda3/bin/moc
-	/home/xieyipeng/anaconda3/bin/moc $(DEFINES) --include /home/xieyipeng/code/git-helper/moc//moc_predefs.h -I/home/xieyipeng/anaconda3/mkspecs/linux-g++ -I/home/xieyipeng/code/git-helper -I/home/xieyipeng/anaconda3/include/qt -I/home/xieyipeng/anaconda3/include/qt/QtWidgets -I/home/xieyipeng/anaconda3/include/qt/QtGui -I/home/xieyipeng/anaconda3/include/qt/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc/moc_mainwindow.cpp
+	/home/xieyipeng/anaconda3/bin/moc $(DEFINES) --include /home/xieyipeng/code/git-helper/moc//moc_predefs.h -I/home/xieyipeng/anaconda3/mkspecs/linux-g++ -I/home/xieyipeng/code/git-helper -I/home/xieyipeng/anaconda3/include/qt -I/home/xieyipeng/anaconda3/include/qt/QtWidgets -I/home/xieyipeng/anaconda3/include/qt/QtGui -I/home/xieyipeng/anaconda3/include/qt/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc/moc_mainwindow.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1037,53 +1034,7 @@ obj/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../anaconda3/include/qt/QtCore/qprocess.h \
 		../../anaconda3/include/qt/QtGui/QList \
 		../../anaconda3/include/qt/QtCore/QString \
-		ui/ui_mainwindow.h \
-		../../anaconda3/include/qt/QtCore/QVariant \
-		../../anaconda3/include/qt/QtWidgets/QAction \
-		../../anaconda3/include/qt/QtWidgets/qaction.h \
-		../../anaconda3/include/qt/QtWidgets/qactiongroup.h \
-		../../anaconda3/include/qt/QtWidgets/QApplication \
-		../../anaconda3/include/qt/QtWidgets/qapplication.h \
-		../../anaconda3/include/qt/QtCore/qcoreapplication.h \
-		../../anaconda3/include/qt/QtCore/qeventloop.h \
-		../../anaconda3/include/qt/QtWidgets/qdesktopwidget.h \
-		../../anaconda3/include/qt/QtGui/qguiapplication.h \
-		../../anaconda3/include/qt/QtGui/qinputmethod.h \
-		../../anaconda3/include/qt/QtWidgets/QButtonGroup \
-		../../anaconda3/include/qt/QtWidgets/qbuttongroup.h \
-		../../anaconda3/include/qt/QtWidgets/QComboBox \
-		../../anaconda3/include/qt/QtWidgets/qcombobox.h \
-		../../anaconda3/include/qt/QtWidgets/qabstractitemdelegate.h \
-		../../anaconda3/include/qt/QtWidgets/qstyleoption.h \
-		../../anaconda3/include/qt/QtWidgets/qabstractspinbox.h \
-		../../anaconda3/include/qt/QtGui/qvalidator.h \
-		../../anaconda3/include/qt/QtCore/qregularexpression.h \
-		../../anaconda3/include/qt/QtWidgets/qslider.h \
-		../../anaconda3/include/qt/QtWidgets/qabstractslider.h \
-		../../anaconda3/include/qt/QtWidgets/qstyle.h \
-		../../anaconda3/include/qt/QtWidgets/qtabbar.h \
-		../../anaconda3/include/qt/QtWidgets/qrubberband.h \
-		../../anaconda3/include/qt/QtWidgets/qframe.h \
-		../../anaconda3/include/qt/QtCore/qabstractitemmodel.h \
-		../../anaconda3/include/qt/QtWidgets/QHeaderView \
-		../../anaconda3/include/qt/QtWidgets/qheaderview.h \
-		../../anaconda3/include/qt/QtWidgets/qabstractitemview.h \
-		../../anaconda3/include/qt/QtWidgets/qabstractscrollarea.h \
-		../../anaconda3/include/qt/QtCore/qitemselectionmodel.h \
-		../../anaconda3/include/qt/QtWidgets/QLineEdit \
-		../../anaconda3/include/qt/QtWidgets/qlineedit.h \
-		../../anaconda3/include/qt/QtGui/qtextcursor.h \
-		../../anaconda3/include/qt/QtGui/qtextformat.h \
-		../../anaconda3/include/qt/QtGui/qpen.h \
-		../../anaconda3/include/qt/QtGui/qtextoption.h \
-		../../anaconda3/include/qt/QtWidgets/QPushButton \
-		../../anaconda3/include/qt/QtWidgets/qpushbutton.h \
-		../../anaconda3/include/qt/QtWidgets/qabstractbutton.h \
-		../../anaconda3/include/qt/QtWidgets/QTextBrowser \
-		../../anaconda3/include/qt/QtWidgets/qtextbrowser.h \
-		../../anaconda3/include/qt/QtWidgets/qtextedit.h \
-		../../anaconda3/include/qt/QtGui/qtextdocument.h \
-		../../anaconda3/include/qt/QtWidgets/QWidget
+		ui/ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/mainwindow.o mainwindow.cpp
 
 obj/moc_mainwindow.o: moc/moc_mainwindow.cpp 

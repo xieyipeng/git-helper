@@ -15,10 +15,20 @@ MainWindow::~MainWindow()
 
 void MainWindow::git_config()
 {
-    MainWindow::git_repositories.append("/home/xieyipeng/code/git-helper");
-    MainWindow::git_repositories.append("/home/xieyipeng/code/Ng-DeepLearning");
-    MainWindow::git_repositories.append("/home/xieyipeng/code/Ng-MachineLearning");
+    MainWindow::init_repositories();
     ui->comboBox->addItems(MainWindow::git_repositories);
+
+}
+
+void MainWindow::init_repositories(){
+    // read line
+    std::string line;
+    std::ifstream file("./repositories.ini");
+    while(std::getline(file,line)){
+        if(line != ""){
+            MainWindow::git_repositories.append(QString::fromStdString(line));
+        }
+    }
 }
 
 /**

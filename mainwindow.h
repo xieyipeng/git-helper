@@ -7,8 +7,12 @@
 #include <QProcess>
 #include <QList>
 #include <QString>
+#include <QDebug>
+
 #include <unistd.h>
 #include <dirent.h>
+#include <iostream>
+#include <fstream>
 
 namespace Ui
 {
@@ -21,6 +25,7 @@ class MainWindow : public QMainWindow
 
 public:
     QList<QString> git_repositories;
+    void init_repositories();
 
     void git_config();
     bool isFileExist(std::string path);
