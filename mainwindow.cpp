@@ -23,11 +23,9 @@ void MainWindow::git_config()
 void MainWindow::init_repositories(){
     // read line
     std::string line;
-    std::ifstream file("./repositories.ini");
+    std::ifstream file(QCoreApplication::applicationDirPath().toStdString()+"/repositories.ini");
     while(std::getline(file,line)){
-        if(line != ""){
-            MainWindow::git_repositories.append(QString::fromStdString(line));
-        }
+        MainWindow::git_repositories.append(QString::fromStdString(line));
     }
 }
 
